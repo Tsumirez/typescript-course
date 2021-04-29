@@ -1,18 +1,17 @@
-let kickass: {
-    name: string;
-    age: number;
-    hobbies: string[],
-    role: [number, string] //tuple property definition. Necessary as TS does not infer tuples, mistaking them for normal arrays.
-} = {
+//here we have our first ts custom type - enum
+//it allows to define key=>value pairs that can be used in reverse.
+//by default values you pass are given numeric keys starting from 0.
+//so Role[0] equals 'ADMIN', while Role.ADMIN will return 0.
+//this can however be totally overriten with different key values, no necessairly numbers at all!
+//that being said, non-numeric values will not allow for the reverse value=>key assignement.
+//Role.REVIEWER will return 'recenzent', but ROLE.recenzent will return undefined.
+enum Role {ADMIN=1,USER=100,REVIEWER='recenzent'}
+
+let kickass = {
     name: 'Zef',
     age: 39,
     hobbies: ['programming','League of Legends','Mentalism'],
-    //here we initialize our tuple.
-    //Tuple is a fixed sized array, that may contain elements of different types, but in a predefined order.
-    //Here first element must be a number, second a string and the number of elements must be two.
-    //without tuple definition in line 5, all of that would not be enforced and TS would see an array of numbers or strings,
-    //where both values being just numbers, or number of elements being different than two would be allowed.
-    role: [1, 'precursor']
+    role: Role.REVIEWER
 }
 
 let fav_anime: string[]; //this means that anime type is an array containing only strings. 
@@ -22,3 +21,5 @@ fav_anime = ['Slayers','Psycho Pass','Saber Marionette J'];
 for (let anime of fav_anime) {
     console.log(anime.toUpperCase());
 }
+
+console.log(Role);
