@@ -1,0 +1,42 @@
+Objects in TypeScript.
+
+When you create an object, it too will be infered a type.
+That type however will not simply be "object". Latter is generic type
+for objects that you can assign explicidly in code.
+
+Instead what will be infered is a precise type based on object you created.
+
+let Zef = {
+  gender: 'male',
+  age: 20
+}
+
+will infer a type like this:
+
+let Zef = {
+  gender: string;
+  age: number;
+}
+
+Notice the semi-colons instead of commas. That's because this is TypeScript and type definition.
+Also note that with given object's type infered, extending the object will throw an error. No new properties can be 
+added outside those in it's declaration as that no longer conforms to inferred type. 
+
+If you use generic object type explicidly it'll still not allow extension, but it'll also not care to recognize the 
+declared object's properties and throw and error upon trying to access them. Generic object has no properties so ones 
+you added are an error according to TS.
+
+To explicidly create a type for an object you can use the curly braces notation:
+
+let Zef: Person {  //this shit is the type definition
+  gender: string;  
+  age: number;
+} = {              //and here we have actual object initialization
+  gender:'male',
+  age: 39
+}
+
+This will work without any issues, though most of the time, letting ts infer it will do the same job with much less code.
+
+Lastly Ts has no problem infering nested objects as well. So don't worry, you're free to panic at the upcoming nested types mess :]
+
