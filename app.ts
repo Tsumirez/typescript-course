@@ -1,18 +1,29 @@
-//Just like in Java (which TypeScript heavily borrows from) functions can have return types.
-//In fact these are often infered. 
-//The below function is given explicid return type of number, but even without that,
-//it would infer it as return clause contains sum of two number types.
-
 function add (n1:number, n2:number): number {
     return n1+n2;
 }
 
-//Once again like in Java, :void return type is present, something vanilla js does not have.
-//This type is used for situation where there is no return statement or it returns an empty value (undefined, null)
-//void is the general "returns nothing" value type and should be used over native js types like
-//undefined, null etc, as the latter expect a return statement to be present even if returning nothing.
-//For void lack of return statement is a non issue, same as returning null or undefined.
-
-function test(): void {
-    console.log('executing a function with no return value')
+function printResult(n: number): void {
+    console.log('Result '+ n);
 }
+
+
+printResult(add(5,12));
+
+//Fuction type lets you enforce for a variable to accept only Functions
+//let z: Function;
+//Notice this time the type is uppercased.
+
+//That however is often not enough. You don't just want a function to be passed.
+//You need to be specific about what argument types it'll accept and what is the type
+//of it's return value.
+//Here is an example how to do it. As you can see arrow function notation from vanilla js
+//is used for that purpose, no curly braces however, as this is function type definition, not a real arrow function.
+//Arguments can be named anything, unrelated to the actual passed function's naming convention.
+//and after the arrow you define the type of retun value. 
+let combineValues: (a:number, b:number) => number;
+
+combineValues = add;
+//combineValues = printResult;
+//combineValues = 5;
+
+console.log(combineValues(8,8));
