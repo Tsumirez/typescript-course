@@ -1,4 +1,11 @@
-let combine = (input1:number | string, input2:number | string) => {
+//Custom type a.k.a. type aliases.
+//If you need a certain type definition in multiple places, you can simply define it under one alias
+//and use that from there. 
+//Here i wrap the number | string type definition into custom "joinable" type and use that from that moment on.
+//remember to use type keyword, followed by your custom name and = after which type definition is given.
+type joinable = number | string;
+
+let combine = (input1: joinable, input2: joinable) => {
 
   
   if (typeof input1 === 'number' && typeof input2==='number') {
@@ -8,11 +15,8 @@ let combine = (input1:number | string, input2:number | string) => {
   }
 }
 
-//literal type is pretty self explanatory. It literally defines allowed values rather than types.
-//the below variable author can only be one of the three nicknames allowed
+
 let author: 'Zef' | 'Zefirez' | 'Tsumirez';
 author = 'Zef';
 
-//Literal types are infered by TS on constants with initialized values.
-//here the "type" is 3.14, not a number;
 const falsePi = 3.14;
