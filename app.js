@@ -1,9 +1,4 @@
-//union type is the "or" of TS. It allows to specify numerous types allowed for a variable.
-//in example below the inputs can now be either a number or a string.
 var combine = function (input1, input2) {
-    //however, attempting to add two different types makes no sense to ts and error is thrown.
-    //here a vanilla js runtime solution is needed. Ts is not bothered with shanenigans of js' type coersion.
-    //For TS incompatible types are incompatible and error is thrown. 
     if (typeof input1 === 'number' && typeof input2 === 'number') {
         return input1 + input2;
     }
@@ -11,3 +6,10 @@ var combine = function (input1, input2) {
         return input1.toString() + input2.toString();
     }
 };
+//literal type is pretty self explanatory. It literally defines allowed values rather than types.
+//the below variable author can only be one of the three nicknames allowed
+var author;
+author = 'Zef';
+//Literal types are infered by TS on constants with initialized values.
+//here the "type" is 3.14, not a number;
+var falsePi = 3.14;
