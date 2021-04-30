@@ -1,26 +1,14 @@
-enum Role {ADMIN=1,USER=100,REVIEWER='recenzent'}
+//union type is the "or" of TS. It allows to specify numerous types allowed for a variable.
+//in example below the inputs can now be either a number or a string.
 
-let kickass = {
-    name: 'Zef',
-    age: 39,
-    hobbies: ['programming','League of Legends','Mentalism'],
-    role: Role.REVIEWER
+let combine = (input1:number | string, input2:number | string) => {
+  //however, attempting to add two different types makes no sense to ts and error is thrown.
+  //here a vanilla js runtime solution is needed. Ts is not bothered with shanenigans of js' type coersion.
+  //For TS incompatible types are incompatible and error is thrown. 
+  
+  if (typeof input1 === 'number' && typeof input2==='number') {
+      return input1+input2
+  } else {
+      return input1.toString() + input2.toString()
+  }
 }
-
-//any type is just what it says - allowance to use any type or comination of.
-//in short TS will let anything slide and not bother. Obviously this is contradictory
-//to the purpose of TS - which is enforcing types and stricter control.
-//use this type only when you just can't know what will be stored in given variable/property, yet 
-//you need it to function. It's a "back off pal, I got this" command to TS.
-let challenge: any;
-challenge = ['wash dishes', 'exercise', 'groceries', {languages: ['hindi']}];
-
-let fav_anime: string[];
-fav_anime = ['Slayers','Psycho Pass','Saber Marionette J']; 
-
-
-for (let anime of fav_anime) {
-    console.log(anime.toUpperCase());
-}
-
-console.log(Role);

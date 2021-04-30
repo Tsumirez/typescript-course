@@ -1,26 +1,13 @@
-//here we have our first ts custom type - enum
-//it allows to define key=>value pairs that can be used in reverse.
-//by default values you pass are given numeric keys starting from 0.
-//so Role[0] equals 'ADMIN', while Role.ADMIN will return 0.
-//this can however be totally overriten with different key values, no necessairly numbers at all!
-//that being said, non-numeric values will not allow for the reverse value=>key assignement.
-//Role.REVIEWER will return 'recenzent', but ROLE.recenzent will return undefined.
-var Role;
-(function (Role) {
-    Role[Role["ADMIN"] = 1] = "ADMIN";
-    Role[Role["USER"] = 100] = "USER";
-    Role["REVIEWER"] = "recenzent";
-})(Role || (Role = {}));
-var kickass = {
-    name: 'Zef',
-    age: 39,
-    hobbies: ['programming', 'League of Legends', 'Mentalism'],
-    role: Role.REVIEWER
+//union type is the "or" of TS. It allows to specify numerous types allowed for a variable.
+//in example below the inputs can now be either a number or a string.
+var combine = function (input1, input2) {
+    //however, attempting to add two different types makes no sense to ts and error is thrown.
+    //here a vanilla js runtime solution is needed. Ts is not bothered with shanenigans of js' type coersion.
+    //For TS incompatible types are incompatible and error is thrown. 
+    if (typeof input1 === 'number' && typeof input2 === 'number') {
+        return input1 + input2;
+    }
+    else {
+        return input1.toString() + input2.toString();
+    }
 };
-var fav_anime; //this means that anime type is an array containing only strings. 
-fav_anime = ['Slayers', 'Psycho Pass', 'Saber Marionette J'];
-for (var _i = 0, fav_anime_1 = fav_anime; _i < fav_anime_1.length; _i++) {
-    var anime = fav_anime_1[_i];
-    console.log(anime.toUpperCase());
-}
-console.log(Role);
