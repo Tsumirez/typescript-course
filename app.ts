@@ -1,22 +1,18 @@
-//Custom type a.k.a. type aliases.
-//If you need a certain type definition in multiple places, you can simply define it under one alias
-//and use that from there. 
-//Here i wrap the number | string type definition into custom "joinable" type and use that from that moment on.
-//remember to use type keyword, followed by your custom name and = after which type definition is given.
-type joinable = number | string;
+//Just like in Java (which TypeScript heavily borrows from) functions can have return types.
+//In fact these are often infered. 
+//The below function is given explicid return type of number, but even without that,
+//it would infer it as return clause contains sum of two number types.
 
-let combine = (input1: joinable, input2: joinable) => {
-
-  
-  if (typeof input1 === 'number' && typeof input2==='number') {
-      return input1+input2
-  } else {
-      return input1.toString() + input2.toString()
-  }
+function add (n1:number, n2:number): number {
+    return n1+n2;
 }
 
+//Once again like in Java, :void return type is present, something vanilla js does not have.
+//This type is used for situation where there is no return statement or it returns an empty value (undefined, null)
+//void is the general "returns nothing" value type and should be used over native js types like
+//undefined, null etc, as the latter expect a return statement to be present even if returning nothing.
+//For void lack of return statement is a non issue, same as returning null or undefined.
 
-let author: 'Zef' | 'Zefirez' | 'Tsumirez';
-author = 'Zef';
-
-const falsePi = 3.14;
+function test(): void {
+    console.log('executing a function with no return value')
+}
