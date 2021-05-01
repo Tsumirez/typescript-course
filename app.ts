@@ -1,18 +1,3 @@
-//TYPE UNKNOWN
-
-//Type "any" is the "do whatever you want at your own risk" type in Typescript, that just 
-//has the compiler ignore the value checks and stay back.
-
-//Type unknown is the "do whatever you want, but only in your own house!"
-//When interacting with other types, a type check will be enforced and possible disasters
-//not allowed to spill freely into rest of the code without some checking.
-
-//Here we see a string type variable receiving value from userInput.
-//if userInput was of type any, it would be allowed without any typechecks.
-//Needless to say not very fun if for example there's an object in there instead of a string.
-//But type unknown will not have any of that. A runtime check must be performed in order for TS
-//to allow it to happen, else an error will be thrown
-
 let userInput: unknown;
 let userName: string;
 
@@ -21,3 +6,19 @@ userInput = 'Max';
 
 if (typeof userInput === 'string')
 userName = userInput;
+
+//"never" return type
+//This return type is used when a function is to not return anything.
+//that usually means it never ending or being forcefully interrupted,
+//like in  a case of throwing and error that shuts the script down, or an infinite loop.
+//Which for reminder can have a practical, healthy use with generator functions.
+//Even a function with no return statement whatsoever does not meet the 'never' criteria,
+//and will throw TS error.
+//In short never is a very fringe and strict case, unlike void that is happy with both
+//lack of return value, or returning an "empty" one like undefined and null.
+
+function generateError(msg:string, code:number):never {
+    throw{messasage:msg, errorCode:code};
+}
+
+generateError('Manual Error',260);
