@@ -1,30 +1,23 @@
-function add (n1:number, n2:number): number {
-    return n1+n2;
-}
+//TYPE UNKNOWN
 
-function printResult(n: number): void {
-    console.log('Result '+ n);
-}
+//Type "any" is the "do whatever you want at your own risk" type in Typescript, that just 
+//has the compiler ignore the value checks and stay back.
 
-//Callback functions can be defined in typescript much the same way as regular ones.
-//There is one major difference however. The return type void. 
-//In a callback with return type void, returning a value is not forbidden, but it will be ignored as far as 
-//TS is concerned. Arguments however are subject to strict adherence much like in standard function types
-function addAndHandle(n1: number, n2:number, callback: (num:number) => void) {
-  const result = n1+n2;
-  callback(result);
-}
+//Type unknown is the "do whatever you want, but only in your own house!"
+//When interacting with other types, a type check will be enforced and possible disasters
+//not allowed to spill freely into rest of the code without some checking.
 
-printResult(add(5,12));
+//Here we see a string type variable receiving value from userInput.
+//if userInput was of type any, it would be allowed without any typechecks.
+//Needless to say not very fun if for example there's an object in there instead of a string.
+//But type unknown will not have any of that. A runtime check must be performed in order for TS
+//to allow it to happen, else an error will be thrown
 
+let userInput: unknown;
+let userName: string;
 
-let combineValues: (a:number, b:number) => number;
+userInput = 5;
+userInput = 'Max';
 
-combineValues = add;
-
-console.log(combineValues(8,8));
-
-addAndHandle(10,20,(result) => {
-    console.log(result);
-    return result;
-})
+if (typeof userInput === 'string')
+userName = userInput;
