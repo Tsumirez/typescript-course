@@ -1,3 +1,4 @@
+"use strict";
 //TS compiler Watch Mode
 // tsc -w app.ts
 //simple as that. Add -w or --watch flag and typescript compiler will behave much the same as lite server,
