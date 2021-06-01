@@ -1,2 +1,2 @@
 "use strict";
-console.log('analizing..and done!');
+console.log('analizing..and gone!');

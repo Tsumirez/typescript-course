@@ -67,5 +67,14 @@
     /* Advanced Options */
     "skipLibCheck": true,                           /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
-  }
+  },
+  "exclude": [
+    "node_modules",  //it's excluded by default anyway, unless you add explicid exclude section..like here
+    //* is the wildcard character, and **/ means any file in any directory.
+    "**/`*.dev.ts"
+  ], 
+  "include": [
+    "**/app.ts",
+  ],
+  "files" : ["analitics.ts"]
 }
