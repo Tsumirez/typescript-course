@@ -1,0 +1,1 @@
+console.log('analizing..and gone!');
