@@ -1,16 +1,17 @@
 /*
-TS core libs. 
+Additional config options part 1:
 
-You'll notice that tsconfig.jsob as a commented "lib" entry.
-This entry specifies libs needed for ts to work properly.
-Having it commented  out means including 4 default ones:
-"dom", "es6", "dom.iterable" and "scripthost".
+    // "allowJs": true,                             /* Allow javascript files to be compiled. */
+    // "checkJs": true,                             /* Report errors in .js files. */
+    // "jsx": "preserve",                           /* Specify JSX code generation: 'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'. */
+    // "declaration": true,                         /* Generates corresponding '.d.ts' file. */
+    // "declarationMap": true,                      /* Generates a sourcemap for each corresponding '.d.ts' file. */
+/*
+  First two make ts compiler check out js files (normally it only cares about ts ones). Can be useful to transpile into other js version
+  or getting a free-check-up on them for some mistakes.
 
-These are needed for ts' basic functionality - recognizing js dom calls, methods (like console.log)
-es6 syntax support and so on. 
-
-You can check this to be true by uncommenting the lib array and not passing it any value.
-At that point ts will fail to recognize the most basic js objects or document object model methods and objects for example.
+  jsx - plain and simple - if it's a react project you'll want to fiddle with this option.
+  declaration and declartions maps are for typscript projects bundled as libraries - not in our scope of interest atm.
 */
 
-console.log('');
+console.log('read the comment in file');
